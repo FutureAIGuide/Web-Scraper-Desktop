@@ -4,7 +4,9 @@
   "description": "An Electron desktop app for web scraping with AI intelligence",
   "main": "dist/main.js",
   "scripts": {
-    "build": "webpack && tsc --project tsconfig.main.json",
+    "build": "npm-run-all build:*",
+    "build:renderer": "webpack",
+    "build:main": "tsc --project tsconfig.main.json",
     "start": "npm run build && electron .",
     "dev": "webpack --watch"
   },
@@ -25,6 +27,7 @@
     "css-loader": "^6.8.1",
     "electron": "^27.1.3",
     "html-webpack-plugin": "^5.5.3",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.32",
     "postcss-loader": "^7.3.3",
     "style-loader": "^3.3.3",

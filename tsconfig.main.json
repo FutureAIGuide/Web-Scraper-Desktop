@@ -4,6 +4,6 @@
     "lib": ["ES2020"],
     "jsx": "preserve"
   },
-  "include": ["src/main.ts"],
+  "include": ["src/main.ts", "src/preload.ts"],
   "exclude": ["node_modules", "dist", "src/renderer"]
 }
