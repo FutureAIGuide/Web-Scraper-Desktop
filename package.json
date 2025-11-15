@@ -1,45 +1,48 @@
 {
-  "name": "web-scraper-desktop",
-  "version": "1.0.0",
-  "description": "An Electron desktop app for web scraping with AI intelligence",
-  "main": "dist/main.js",
-  "scripts": {
-    "build": "npm-run-all build:*",
-    "build:renderer": "webpack",
-    "build:main": "tsc --project tsconfig.main.json",
-    "start": "npm run build && electron .",
-    "dev:renderer": "webpack --watch --mode development"
-  },
-  "keywords": [
-    "electron",
-    "web-scraper",
-    "playwright",
-    "react",
-    "typescript"
-  ],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^20.10.0",
-    "@types/react": "^18.2.42",
-    "@types/react-dom": "^18.2.17",
-    "autoprefixer": "^10.4.16",
-    "css-loader": "^6.8.1",
-    "electron": "^27.1.3",
-    "html-webpack-plugin": "^5.5.3",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.32",
-    "postcss-loader": "^7.3.3",
-    "style-loader": "^3.3.3",
-    "tailwindcss": "^3.3.6",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.3.2",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
-  },
-  "dependencies": {
-    "playwright": "^1.40.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+	"name": "web-scraper-desktop",
+	"version": "1.0.0",
+	"description": "An Electron desktop app for web scraping with AI intelligence.",
+	"main": "./dist/main/electron-main.js",
+	"scripts": {
+		"start": "npm run build && electron .",
+		"dev": "concurrently \"npm run watch:main\" \"npm run watch:renderer\" \"electron .\"",
+		"build": "npm run build:main && npm run build:renderer",
+		"build:main": "tsc -p tsconfig.json",
+		"build:renderer": "webpack --config webpack.config.js",
+		"watch:main": "tsc -w -p tsconfig.json",
+		"watch:renderer": "webpack --config webpack.config.js --watch",
+		"postinstall": "electron-builder install-app-deps"
+	},
+	"keywords": [
+		"electron",
+		"typescript",
+		"react",
+		"playwright",
+		"scraper"
+	],
+	"author": "Gemini",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^20.14.9",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"concurrently": "^8.2.2",
+		"css-loader": "^7.1.2",
+		"electron": "^30.1.6",
+		"electron-builder": "^24.13.3",
+		"html-webpack-plugin": "^5.6.0",
+		"style-loader": "^4.0.0",
+		"ts-loader": "^9.5.1",
+		"typescript": "^5.5.3",
+		"webpack": "^5.93.0",
+		"webpack-cli": "^5.1.4"
+	},
+	"dependencies": {
+		"papaparse": "^5.4.1",
+		"playwright": "^1.45.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwindcss": "^3.4.4",
+		"postcss": "^8.4.39"
+	}
 }
