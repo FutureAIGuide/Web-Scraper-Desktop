@@ -8,7 +8,7 @@
     "build:renderer": "webpack",
     "build:main": "tsc --project tsconfig.main.json",
     "start": "npm run build && electron .",
-    "dev": "webpack --watch"
+    "dev:renderer": "webpack --watch --mode development"
   },
   "keywords": [
     "electron",
